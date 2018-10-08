@@ -1,8 +1,8 @@
 import xml.etree.ElementTree as ET
-tree = ET.parse('C:\\Users\\marvin.martens\\ownCloud\\Documents\\Documents\\Paper WP and AOPwiki\\permXML/aop-wiki-xml-2018-04-01') #This is the function to parse the XML file.
+tree = ET.parse('aop-wiki-xml-2018-04-01') #This is the function to parse the XML file.
 root = tree.getroot()
 
-writtenoutput = open('C:\\Users\\marvin.martens\\ownCloud\\Documents\\Documents\\Paper WP and AOPwiki\\permXML\\Revised/writtenoutput.txt', 'w') #The file to save all results to.
+writtenoutput = open('writtenoutput.txt', 'w') #The file to save all results to.
 
 list = ['Molecular','Cellular','Tissue','Organ']
 
@@ -16,7 +16,7 @@ for bpf in root.findall('{http://www.aopkb.org/aop-xml}biological-object'):
 
 
 #Create a dictionary with all gene names to map to KE and KER descriptions
-HGNC= open('C:\\Users\\marvin.martens\\ownCloud\\Documents\\Documents\\Paper WP and AOPwiki\\permXML/HGNCgenelist.txt', 'r') #The HGNC gene name file from the HGNC database
+HGNC= open('HGNCgenelist.txt', 'r') #The HGNC gene name file from the HGNC database
 genedict = {} #A dictionary to contain all variants of all genes provided by the HGNC file
 for line in HGNC:
 	if not 'HGNC ID	Approved Symbol	Approved Name	Previous Symbols	Synonyms	Ensembl ID(supplied by Ensembl)'in line: #To avoid the first line to be added to the dictionary
@@ -191,7 +191,7 @@ for l in list:
 
 
 	#Create a WikiPathways SPARQL query for Pathways by genes found in KEs, for each level of biological organization
-	g = open('C:\\Users\\marvin.martens\\ownCloud\\Documents\\Documents\\Paper WP and AOPwiki\\permXML\\Revised/SPARQLqueryENSIDsafterHGNCmap'+l+'.txt', 'w')
+	g = open('SPARQLqueryENSIDsafterHGNCmap'+l+'.txt', 'w')
 	g.write('PREFIX wp:      <http://vocabularies.wikipathways.org/wp#>'+'\n'+'PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>'+'\n'+'PREFIX dcterms: <http://purl.org/dc/terms/>'+'\n'+'SELECT DISTINCT ?pathway str(?ensId) as ?geneProduct'+'\n'+'WHERE {'+'\n'+'    ?geneProduct a wp:GeneProduct . '+'\n'+'    ?geneProduct wp:bdbEnsembl ?ensId .'+'\n'+'    ?geneProduct dcterms:isPartOf ?pathway .'+'\n'+'    ?pathway a wp:Pathway .'+'\n'+'    FILTER (')
 	n = 0
 	for item in ensembllist:
@@ -275,7 +275,7 @@ writtenoutput.write('\nKEY EVENT RELATIONSHIPS'+'\n'+'The total amount of KERs: 
 
 
 
-g = open('C:\\Users\\marvin.martens\\ownCloud\\Documents\\Documents\\Paper WP and AOPwiki\\permXML\\Revised/SPARQLqueryENSIDsafterHGNCmapKER.txt', 'w')
+g = open('SPARQLqueryENSIDsafterHGNCmapKER.txt', 'w')
 g.write('PREFIX wp:      <http://vocabularies.wikipathways.org/wp#>'+'\n'+'PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>'+'\n'+'PREFIX dcterms: <http://purl.org/dc/terms/>'+'\n'+'SELECT DISTINCT ?pathway str(?ensId) as ?geneProduct'+'\n'+'WHERE {'+'\n'+'    ?geneProduct a wp:GeneProduct . '+'\n'+'    ?geneProduct wp:bdbEnsembl ?ensId .'+'\n'+'    ?geneProduct dcterms:isPartOf ?pathway .'+'\n'+'    ?pathway a wp:Pathway .'+'\n'+'    FILTER (')
 n = 0
 for item in ensembllist:
@@ -307,7 +307,7 @@ for st in root.findall('{http://www.aopkb.org/aop-xml}stressor'):
 
 #Part to store all CAS RNs related to stressors in a file
 amountCAS=0
-g = open('C:\\Users\\marvin.martens\\ownCloud\\Documents\\Documents\\Paper WP and AOPwiki\\permXML\\Revised/ListofCasrns.txt', 'w')
+g = open('ListofCasrns.txt', 'w')
 for chemical in root.findall('{http://www.aopkb.org/aop-xml}chemical'):
 	if chemical.get('id') in chemIDlist:
 		if not 'NOCAS' in chemical.find('{http://www.aopkb.org/aop-xml}casrn').text:
