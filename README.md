@@ -5,7 +5,7 @@ This repository contains the python script to extract data from the AOP-Wiki XML
 
 ## Step 1: Download the input files
 
-###a: 
+### a: 
 The AOP-Wiki provides quarterly downloads. The full AOP-Wiki XML files should be downloaded from: https://aopwiki.org/downloads. To reproduce the results of the paper, download the AOP Wiki XML of April 1st, 2018.
 ### b: 
 The HGNC genelist was retrieved from HGNC custom download page (https://www.genenames.org/cgi-bin/download). However, this input file is also present in this repository.
