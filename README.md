@@ -22,7 +22,7 @@ This script was used with Python 3.5.
 
 ### a: Written output
 The general output file (writtenoutput.txt) summarises all relevant information based on the data in the AOP-Wiki XML, readable for the human. 
-### b: SPARWL queries for genes
+### b: SPARQL queries for genes
 The SPARQL queries, that are stored as text files, should be entered in the WikiPathways SPARQL endpoint. In return, an output will be given as an answer to the SPARQL query.
 ### c: Metabolites
 The ListofCasrns.txt file is used to map the CAS-RNs from the AOP-Wiki XML to ChEBI IDs, because the SPARQL endpoint does not allow queries for CAS-RNs directly.
