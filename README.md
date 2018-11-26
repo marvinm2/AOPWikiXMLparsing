@@ -28,5 +28,5 @@ The SPARQL queries, that are stored as text files, should be entered in the Wiki
 The ListofCasrns.txt file is used to map the CAS-RNs from the AOP-Wiki XML to ChEBI IDs, because the SPARQL endpoint does not allow queries for CAS-RNs directly.
 
 ## Step 5: Identifier mapping in R
-In Rstudio (R version xx and Rstudio version xx), set the correct file paths to the CAS Registry Number file (ListofCasrns.txt) and the output file. Then run the script.
+In Rstudio (R version 3.4.4 and Rstudio version 1.1.447), set the correct file paths to the CAS Registry Number file (ListofCasrns.txt) and the output file. Then run the script.
 
